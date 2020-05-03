@@ -6,6 +6,32 @@ from .models import Squirrel
 def index(request):
     return HttpResponse('Hello, This is tracker index')
 
+def map(request):
+    # implement needed #
+    return HttpResponse('Hello Julia, This is map views')
+
+def sightings(request):
+    # implement needed #
+    return HttpResponse('Hello, This is sightings views')
+
+def add_sightings(request):
+    # implement needed #
+    return HttpResponse('Hello, this is add sightings views')
+
+def sightings_stats(request):
+    # implement needed #
+    return HttpResponse('Hello, this is sightings stats views')
+
+
+
+
+
+
+
+
+
+#############################################################################
+
 def list_pets(request):
     squirrels = Squirrel.objects.all()
     
