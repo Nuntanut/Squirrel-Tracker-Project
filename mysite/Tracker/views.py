@@ -19,8 +19,14 @@ def map(request):
 
 
 def sightings(request):
-    # implement needed #
-    return HttpResponse('Hello, This is sightings views')
+    squirrels = Squirrel.objects.all()
+    length = len(squirrels)
+    content = {
+        'sightings': squirrels,
+        'length': length,
+    }
+
+    return render(request, 'Trackers/sightings.html', content)
 
 def add_sightings(request):
     # implement needed #
