@@ -12,9 +12,9 @@ class Squirrel(models.Model):
             primary_key = True,
     )
     
-    latitude = models.FloatField('latitude', max_length = 20)
+    latitude = models.FloatField('latitude', max_length = 20, null = True)
 
-    longitude = models.FloatField('longitude', max_length = 20)
+    longitude = models.FloatField('longitude', max_length = 20, null = True)
 
     shift_choices = (
         ('AM', 'AM'),
@@ -28,13 +28,13 @@ class Squirrel(models.Model):
             default = 'AM',
     )
 
-    date = models.DateTimeField('Date')
+    date = models.DateTimeField('Date', null = True)
 
-    age = models.CharField('Age')
+    age = models.CharField('Age', max_length = 10, null = True)
 
-    primary_fur_color = models.CharField('Primary Fur Color', max_length = 100)
+    primary_fur_color = models.CharField('Primary Fur Color', max_length = 100, null = True)
 
-    specific_location = models.CharField('Specific Location', max_length = 100)
+    specific_location = models.CharField('Specific Location', max_length = 100, null = True)
 
     TF_choices = (
         ('true', 'True'),
@@ -77,7 +77,7 @@ class Squirrel(models.Model):
             default = '',
     )
 
-    other_activities = models.CharField('other activities', max_length = 100)
+    other_activities = models.CharField('other activities', max_length = 100, null = True)
 
     kuks = models.CharField(
             'kuks',
