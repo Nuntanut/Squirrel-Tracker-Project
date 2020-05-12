@@ -2,7 +2,7 @@ import csv
 
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-from squirrels.models import Sighting
+from Tracker.models import Squirrel
 
 
 class Command(BaseCommand):
@@ -16,9 +16,9 @@ class Command(BaseCommand):
             reader = csv.DictReader(fp)
             data = list(reader)
 
-        sightings = []
+        squirrels = []
         for dict_ in data:
-            sightings.append(Sighting(
+            squirrels.append(Squirrel(
                 latitude=float(dict_['Y']),
                 longitude=float(dict_['X']),
                 unique_squirrel_id=dict_['Unique Squirrel ID'],
@@ -43,4 +43,4 @@ class Command(BaseCommand):
                 runs_from=dict_['Runs from'].lower() == 'true',
             ))
 
-        Sighting.objects.bulk_create(sightings)
+        Squirrel.objects.bulk_create(squirrels)
