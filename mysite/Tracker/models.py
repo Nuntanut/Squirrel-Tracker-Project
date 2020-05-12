@@ -1,7 +1,7 @@
 from django.db import models
 
 class Squirrel(models.Model):
-
+    
     def __str__(self):
         return self.unique_squirrel_id
     
