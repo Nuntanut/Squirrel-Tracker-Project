@@ -8,7 +8,15 @@ def index(request):
 
 def map(request):
     # implement needed #
-    return HttpResponse('Hello Julia, This is map views')
+    response_text = 'map'
+    length = len(Squirrel.objects.all())
+    coordinates = Squirrel.objects.all()
+    context = {'length': length, 'coordinates': coordinates,}
+    return render(request, 'Tracker/map.html', context)
+
+
+
+
 
 def sightings(request):
     # implement needed #
