@@ -10,7 +10,7 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Date</th>
-      <th scope="col">sighting</th>
+      <th scope="col">Link to unique squirrel sighting</th>
     </tr>
   </thead>
 
@@ -18,8 +18,8 @@
     {% for squirrel in squirrels %}
     <tr>
 	    <th scope="row">{{ squirrel.unique_squirrel_id }}</th>
-      <td>{{ squirrel.date }}</td>
-      <td>{{ squirrel.age }}</td>
+	    <td>{{ squirrel.date }}</td>
+	    <td><a href="/Tracker/sightings/{{ squirrel.unique_squirrel_id }}">{{ squirrel.unique_squirrel_id }}</a></td>
     </tr>
     {% endfor %}
 

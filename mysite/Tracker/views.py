@@ -16,7 +16,7 @@ def sightings(request):
 
     squirrels = Squirrel.objects.all()
 
-    return render(request, 'Tracker/sightings.html', {'Tracker': squirrels})
+    return render(request, 'Tracker/sightings.html', {'squirrels': squirrels})
 
 def sighting_squirrel_detail(request, unique_squirrel_id):
 
