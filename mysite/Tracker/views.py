@@ -22,7 +22,7 @@ def sighting_squirrel_detail(request, unique_squirrel_id):
 
     squirrels = get_object_or_404(Squirrel, pk = unique_squirrel_id)
 
-    return render(request, 'Tracker/squirrel_detail.html', {'sightings': sightings})
+    return render(request, 'Tracker/squirrel_detail.html', {'squirrels': squirrels})
 
 def sightings_stats(request):
     df = Squirrel.objects.all()
