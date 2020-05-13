@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import sys
+sys.path.append('../')
+from Tracker import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Tracker/', include('Tracker.urls')),
+    path('', views.front),
 ]

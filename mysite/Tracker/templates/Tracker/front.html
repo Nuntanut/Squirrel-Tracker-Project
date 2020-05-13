@@ -4,26 +4,12 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	</head>
 	<body>
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Date</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {% for squirrel in squirrels %}
-    <tr>
-	    <th scope="row"><a href="/Tracker/sightings/{{ squirrel.unique_squirrel_id }}">{{ squirrel.unique_squirrel_id }}</a></th>
-	    <td>{{ squirrel.date }}</td>
-    </tr>
-    {% endfor %}
-
-  </tbody>
-</table>
-
+		<div style="height: 200px; width: 400px; position: fixed; top: 50%; left: 50%; margin-top: -100px; margin-left: -200px;">
+		<a class="btn btn-primary" href="/Tracker/map/" role="button">Map</a>
+		<a class="btn btn-primary" href="/Tracker/sightings/" role="button">Sightings</a>
+		<a class="btn btn-primary" href="/Tracker/sightings/stats/" role="button">Statistics</a>
+		<a class="btn btn-danger" href="/admin/" role="button">Admin Site</a>
+		</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -3,6 +3,9 @@ from django.http import HttpResponse
 
 from .models import Squirrel
 
+def front(request):
+    return render(request, 'Tracker/front.html')
+
 def index(request):
     return HttpResponse('Hello, This is Squirrel Tracker. Please, visit /Tracker/map , /Tracker/sightings , and /Tracker/sightings/stats site to explore')
 
