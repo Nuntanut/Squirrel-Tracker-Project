@@ -8,9 +8,9 @@ def index(request):
 
 def map(request):
 
-    coordinates = Squirrel.objects.all()
+    sightings = Squirrel.objects.all()
 
-    return render(request, 'Tracker/map.html', {'coordinates': coordinates,})
+    return render(request, 'Tracker/map.html', {'sightings': sightings,})
 
 def sightings(request):
 
