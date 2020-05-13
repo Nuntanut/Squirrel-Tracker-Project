@@ -22,11 +22,10 @@ def sightings(request):
     squirrels = Squirrel.objects.all()
     length = len(squirrels)
     content = {
-        'sightings': squirrels,
-        'length': length,
+        'Tracker': squirrels,
     }
 
-    return render(request, 'Trackers/sightings.html', content)
+    return render(request, 'Tracker/sightings.html', content)
 
 def add_sightings(request):
     # implement needed #
