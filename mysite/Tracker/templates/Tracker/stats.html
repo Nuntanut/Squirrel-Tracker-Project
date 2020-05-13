@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<h1> Stats </h1>
+		<h3> Total : {{ total }} </h3>
+		<h3> Average Latitude: {{ latitude }}</h3>
+		<h3> Average Longitude: {{ longitude }}</h3>
+	</head>	
+
+	<body>
+		{% autoescape off %}
+		{% for k,v in pivot.items %}
+			{{ v }} <br>
+		{% endfor %}
+		{% endautoescape %}
+	</body>
+</html>

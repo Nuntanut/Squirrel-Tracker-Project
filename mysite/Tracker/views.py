@@ -25,57 +25,27 @@ def sighting_squirrel_detail(request, unique_squirrel_id):
     return render(request, 'Tracker/squirrel_detail.html', {'squirrels': squirrels})
 
 def sightings_stats(request):
-    df = Squirrel.objects.all()
     
-    latitude = list(df.aggregate(Avg('latitude')).values())[0]
-    longitude = list(df.aggregate(Avg('longitude')).values())[0]
+    qs = Squirrel.objects.all()
+    df = qs.to_dataframe()
+    
+    total = len(df)
 
-    df_pv = dict()
+    latitude = df['latitude'].mean()
+    longitude = df['longitude'].mean()
 
-    df = Squirrel.objects.exclude(primary_fur_color__isnull = True).exclude(primary_fur_color = '').exclude(age__isnull = True).exclude(age = '?').exclude(age = '')
-    rows = ['primary_fur_color','age']
-    pt = df.to_pivot_table(values='unique_squirrel_id', rows=rows, aggfunc = 'count')
-    df_pv['1'] = pt.to_html()
+    pivot = dict()
 
-    df = Squirrel.objects.exclude(location__isnull = True).exclude(location = '').exclude(primary_fur_color__isnull = True).exclude(primary_fur_color = '')
-    rows = ['primary_fur_color']
-    cols = ['location']
-    pt2 = df.to_pivot_table(values='unique_squirrel_id', rows=rows, cols=cols, aggfunc = 'count')
-    df_pv['2'] = pt2.to_html()
-
-    df = Squirrel.objects.exclude(location__isnull = True).exclude(location = '').exclude(shift__isnull = True).exclude(shift = '')
-    rows = ['location']
-    cols = ['shift']
-    pt3 = df.to_pivot_table(values='unique_squirrel_id', rows=rows, cols=cols, aggfunc = 'count')
-    df_pv['3'] = pt3.to_html()
-
-    context = {'df_pv': df_pv}
+    rows = ['shift','primary_fur_color','age']
+    pv = df.pivot_table(values='unique_squirrel_id', index=rows, aggfunc = 'count')
+    pivot['1'] = pv.to_html()
 
     context = {
-        'df_pv': df_pv,
+        'pivot': pivot,
+        'total': total,
         'latitude': latitude,
         'longitude': longitude,
     }
 
-    return render(request, 'sightings/stats.html', context)
+    return render(request, 'Tracker/stats.html', context)
 
-
-
-
-
-
-
-
-#############################################################################
-
-def list_pets(request):
-    squirrels = Squirrel.objects.all()
-    
-    return render(request, 'Tracker/list.html', {'squirrels': squirrels})
-
-def get_squirrel(request, squirrel_id):
-
-    squirrel = Squirrel.opjects.get(id=squirrel_id)
-
-    return HttpResponse(f'Hello, This is {squirrel.unique_squirrel_id}')
-# Create your views here.
