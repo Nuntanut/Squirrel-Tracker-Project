@@ -1,7 +1,10 @@
 from django.db import models
+from django_pandas.managers import DataFrameManager
 
 class Squirrel(models.Model):
     
+    objects = DataFrameManager()
+
     def __str__(self):
         return self.unique_squirrel_id
     

@@ -10,6 +10,6 @@ urlpatterns = [
 
     path('map/', views.map),
     path('sightings/', views.sightings),
-    path('sightings/add/', views.add_sightings),
+    path('sightings/<str:unique_squirrel_id>/', views.sighting_squirrel_detail),
     path('sightings/stats/', views.sightings_stats),
 ]
